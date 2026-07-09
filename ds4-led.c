@@ -3,11 +3,13 @@
 #include <sys/ioctl.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include <unistd.h>
 
 int main(int argc, char** argv) {
   char path[14];
   uint8_t report[32];
+  memset(report, 0, 32);
   if (argc <= 1) {
     printf("Color must be supplied to this program.\n");
     return 1;
@@ -29,12 +31,12 @@ int main(int argc, char** argv) {
     close(fd);
   }
   if (i == 8) {
-    printf("No Dualshock 4 Controllers connected.");
+    printf("No Dualshock 4 Controllers connected.\n");
     return -1;
   }
   int res = ioctl(fd, HIDIOCSOUTPUT(sizeof(report)), report);
   if (res < 0) {
-    printf("Failed to change Dualshock 4 LED color");
+    printf("Failed to change Dualshock 4 LED color\n");
     return res;
   }
   return 0;
