@@ -16,7 +16,10 @@ int main(int argc, char** argv) {
   }
   report[0] = 0x05;
   report[1] = 0x07;
-  sscanf(argv[1], "#%2x%2x%2x",&report[6],&report[7],&report[8]);
+  if (sscanf(argv[1], "#%2x%2x%2x",&report[6],&report[7],&report[8]) != 3) {
+    printf("argv[1] not in the hex string color form.\n");
+    return -1;
+  }
   int i, fd;
   for (i = 0; i < 8; i++) {
     sprintf(path, "/dev/hidraw%d", i);
