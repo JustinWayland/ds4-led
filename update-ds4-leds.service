@@ -1,0 +1,5 @@
+[Unit]
+Description=Updates DualShock 4 controller LED to primary color of Noctalia Shell
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/update-ds4-leds
