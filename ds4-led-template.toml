@@ -1,0 +1,3 @@
+[theme.templates.user.primary_color]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/primary-color"
+output_path = "$XDG_CONFIG_HOME/noctalia/primary-color"
