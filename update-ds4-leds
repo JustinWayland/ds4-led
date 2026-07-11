@@ -4,7 +4,7 @@ set -euo pipefail
 CURRENT_USER=$(loginctl list-sessions | awk 'NR==2 {print $3}') # We might be getting called from a udev rule
 # There might not be a logged in user when udev calls this, so handle not having a user gracefully
 if [[ -n "$CURRENT_USER" ]]; then
-    touch /tmp/my-udev-log
+    touch /tmp/my-udev-log || true
     xargs ds4-led </home/$CURRENT_USER/.config/noctalia/primary-color >> /tmp/my-udev-log
 else
     ds4-led "#00007f"
